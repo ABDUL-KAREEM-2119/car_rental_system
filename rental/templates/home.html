@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% load static %}
+
+<!-- title -->
+{% block title %} Home - Car Rental Service {% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+<!-- content -->
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="rent-text">For Rent PKR 19,000 Per Day</p>
+    <h1>Reserve Now and Get 50% Off</h1>
+    <button onclick="location.href='{% url 'cars' %}'" class="cta-button">
+      Reserve Now
+    </button>
+  </div>
+</section>
+
+<!-- Hot Offers Section -->
+<section class="offers-section">
+  <div class="container">
+    <h2>Hot Offers</h2>
+    <div class="offers-grid">
+      {% for car in cars %}
+      <div class="car-card">
+        <img src="{{ car.image_url }}" alt="{{ car.make }} {{ car.model }}" />
+        <div class="car-details">
+          <h3>{{ car.make }} {{ car.model }}</h3>
+          <p class="price">PKR {{ car.daily_rate }} / Day</p>
+          <div class="car-features">
+            <span
+              ><i class="fas fa-calendar-alt"></i> Model {{ car.year }}</span
+            >
+            <span><i class="fas fa-cog"></i> {{ car.car_type }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

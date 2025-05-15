@@ -1,0 +1,184 @@
+/* Cars Container */
+.cars-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cars-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.cars-header h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/* Add Car Button */
+.add-car-btn {
+  background: #000066;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.add-car-btn i {
+  font-size: 14px;
+}
+
+.add-car-btn:hover {
+  background: #000088;
+}
+
+/* Cars Grid */
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.car-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+}
+
+.car-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.car-details {
+  padding: 20px;
+}
+
+.car-details h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.price {
+  color: #000066;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.car-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.car-features span {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.car-features i {
+  margin-right: 5px;
+  color: #000066;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close {
+  position: sticky;
+  float: right;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+#carForm {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+#carForm .form-group {
+  display: grid;
+  gap: 5px;
+}
+
+#carForm input,
+#carForm select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.submit-btn {
+  background: #000066;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background: #000088;
+}
+
+@media (max-width: 768px) {
+  .cars-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cars-header h1 {
+    font-size: 2rem;
+  }
+
+  .car-features {
+    grid-template-columns: 1fr;
+  }
+}

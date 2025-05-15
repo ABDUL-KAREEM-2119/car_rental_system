@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Car Rental{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}" {% if request.path == '/' %}class="active"{% endif %}>Home</a></li>
+            <li><a href="{% url 'about' %}" {% if request.path == '/about/' %}class="active"{% endif %}>About</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'cars' %}" {% if request.path == '/cars/' %}class="active"{% endif %}>Cars</a></li>
+            {% endif %}
+            <li><a href="{% url 'contact' %}" {% if request.path == '/contact/' %}class="active"{% endif %}>Contact</a></li>
+            {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                {% endif %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}" {% if request.path == '/login/' %}class="active"{% endif %}>Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> +92 3103707039</p>
+                    <p><i class="fas fa-envelope"></i> kareem@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Car Rental Service. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 

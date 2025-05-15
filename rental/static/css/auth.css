@@ -1,0 +1,144 @@
+/* Auth Container */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/login-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Auth Form */
+.auth-form {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2rem;
+}
+
+.auth-form h2 i {
+  margin-right: 10px;
+  color: #000066;
+}
+
+/* Form Groups */
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form-group i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 20px 12px 45px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Form Options */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.forgot-password {
+  color: #000066;
+  text-decoration: none;
+}
+
+/* Auth Button */
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  background: #000066;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-btn:hover {
+  background: #000088;
+}
+
+/* Auth Link */
+.auth-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.auth-link a {
+  color: #000066;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+/* Messages */
+.messages {
+  margin-bottom: 20px;
+}
+
+.alert {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@media (max-width: 768px) {
+  .auth-form {
+    padding: 30px;
+  }
+
+  .auth-form h2 {
+    font-size: 1.8rem;
+  }
+}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %} {% load static %} {% block title %}About Us - Car
+Rental Service{% endblock %} {% block content %}
+<main>
+  <!-- About Hero Section -->
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <h1>About Our Car Rental</h1>
+      <p>Your Trusted Partner Since 2010</p>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="our-story">
+    <div class="container">
+      <div class="story-content">
+        <div class="story-text">
+          <h2>Our Story</h2>
+          <p>
+            Welcome to Car Rental Service, your premier destination for quality
+            car rentals in Bahawalpur. Since our establishment in 2010, we've
+            been dedicated to providing exceptional service and a wide range of
+            vehicles to meet all your transportation needs.
+          </p>
+          <p>
+            Our mission is to make car rental simple, affordable, and enjoyable.
+            We take pride in maintaining a fleet of well-serviced vehicles and
+            offering personalized customer service to ensure your complete
+            satisfaction.
+          </p>
+        </div>
+        <div class="story-image">
+          <img src="{% static 'images/luxrey.jpg' %}" alt="Our Fleet" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="why-choose-us">
+    <div class="container">
+      <h2>Why Choose Us</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-car"></i>
+          <h3>Quality Vehicles</h3>
+          <p>Latest models with regular maintenance and cleaning</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-clock"></i>
+          <h3>24/7 Support</h3>
+          <p>Round-the-clock customer service for your convenience</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-money-bill-wave"></i>
+          <h3>Best Rates</h3>
+          <p>Competitive pricing with no hidden charges</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-map-marked-alt"></i>
+          <h3>Flexible Pickup</h3>
+          <p>Multiple pickup and drop-off locations available</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Numbers Section -->
+  <section class="our-numbers">
+    <div class="container">
+      <h2>Our Numbers Speak</h2>
+      <div class="numbers-grid">
+        <div class="number-card">
+          <i class="fas fa-car"></i>
+          <h3>50+</h3>
+          <p>Cars in Fleet</p>
+        </div>
+        <div class="number-card">
+          <i class="fas fa-users"></i>
+          <h3>1000+</h3>
+          <p>Happy Customers</p>
+        </div>
+        <div class="number-card">
+          <i class="fas fa-route"></i>
+          <h3>5000+</h3>
+          <p>Trips Completed</p>
+        </div>
+        <div class="number-card">
+          <i class="fas fa-award"></i>
+          <h3>13+</h3>
+          <p>Years Experience</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}" />
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Rent {{ car.make }}
+{{ car.model }} - Car Rental{% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/rent_car.css' %}" />
+{% endblock %} {% block content %}
+<div class="rent-container">
+  <div class="car-details">
+    <img src="{{ car.image_url }}" alt="{{ car.make }} {{ car.model }}" />
+    <div class="car-info">
+      <h2>{{ car.make }} {{ car.model }}</h2>
+      <p class="price">PKR {{ car.daily_rate }} / Day</p>
+      <div class="car-features">
+        <span><i class="fas fa-calendar-alt"></i> Model {{ car.year }}</span>
+        <span><i class="fas fa-cog"></i> {{ car.car_type }}</span>
+      </div>
+    </div>
+  </div>
+
+  <form id="rentForm" class="rent-form" method="POST">
+    {% csrf_token %}
+    <h3>Rental Details</h3>
+
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <div
+        class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+      >
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="form-group">
+      <label for="rental_date">Rental Date</label>
+      <input
+        type="date"
+        id="rental_date"
+        name="rental_date"
+        required
+        min="{{ today_date|date:'Y-m-d' }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="return_date">Return Date</label>
+      <input
+        type="date"
+        id="return_date"
+        name="return_date"
+        required
+        min="{{ today_date|date:'Y-m-d' }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Total Cost</label>
+      <p id="totalCost" class="total-cost">PKR 0</p>
+    </div>
+
+    <button type="submit" class="rent-btn">Confirm Rental</button>
+  </form>
+</div>
+{% endblock %} {% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const rentalDate = document.getElementById('rental_date');
+      const returnDate = document.getElementById('return_date');
+      const totalCost = document.getElementById('totalCost');
+      const dailyRate = {{ car.daily_rate }};
+
+      function calculateTotalCost() {
+          if (rentalDate.value && returnDate.value) {
+              const start = new Date(rentalDate.value);
+              const end = new Date(returnDate.value);
+              const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+              if (days > 0) {
+                  totalCost.textContent = `PKR ${(days * dailyRate).toFixed(2)}`;
+              } else {
+                  totalCost.textContent = 'PKR 0';
+              }
+          }
+      }
+
+      rentalDate.addEventListener('change', calculateTotalCost);
+      returnDate.addEventListener('change', calculateTotalCost);
+  });
+</script>
+{% endblock %}

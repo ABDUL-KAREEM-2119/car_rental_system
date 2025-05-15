@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %}
+
+<!-- title -->
+{% block title %}Our Cars - Car Rental Service{% endblock %}
+
+<!-- extra css -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cars.css' %}" />
+{% endblock %}
+
+<!-- content -->
+
+{% block content %}
+<main class="cars-container">
+  <div class="cars-header">
+    <h1>Available Cars</h1>
+  </div>
+
+  <div class="cars-grid" id="carsGrid">
+    {% for car in cars %}
+    <div class="car-card">
+      <img src="{{ car.image_url }}" alt="{{ car.make }} {{ car.model }}" />
+      <div class="car-details">
+        <h3>{{ car.make }} {{ car.model }}</h3>
+        <p class="price">PKR {{ car.daily_rate }} / Day</p>
+        <div class="car-features">
+          <span><i class="fas fa-calendar-alt"></i> Model {{ car.year }}</span>
+          <span><i class="fas fa-cog"></i> {{ car.car_type }}</span>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p>No cars available at the moment.</p>
+    {% endfor %}
+  </div>
+</main>
+
+{% endblock %} {% block extra_js %}
+<script src="{% static 'js/cars.js' %}"></script>
+{% endblock %}

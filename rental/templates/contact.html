@@ -1,0 +1,117 @@
+{% extends 'base.html' %} {% load static %}
+
+<!-- title -->
+{% block title %}Contact Us - Car Rental{% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+{% endblock %}
+
+<!-- content -->
+{% block content %}
+<div class="contact-hero">
+  <h1>Get In Touch</h1>
+  <p>We'd love to hear from you</p>
+</div>
+
+<div class="contact-container">
+  <div class="contact-content">
+    <div class="contact-cards">
+      <div class="contact-card">
+        <i class="fas fa-phone-alt"></i>
+        <h3>Call Us</h3>
+        <p>24/7 Customer Support</p>
+        <a href="tel:+923103707039" class="contact-link">+92 310 3707039</a>
+      </div>
+
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <h3>Email Us</h3>
+        <p>We'll respond within 24 hours</p>
+        <a href="mailto:kareem@gmail.com" class="contact-link"
+          >kareem@gmail.com</a
+        >
+      </div>
+
+      <div class="contact-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Visit Us</h3>
+        <p>Our Office Location</p>
+        <a
+          href="https://www.google.com/maps/dir//Back+Side+Hafiz+Medical+Store,+Begdad+Camps+Road,+Mela+Gali,+Gulberg+Colony,+Bahawalpur,+Punjab+63100/@29.3806678,71.635701,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x393b9054d491bb13:0xf6611764eb78ac3e!2m2!1d71.7181024!2d29.3806931?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          class="contact-link"
+        >
+          Bahawalpur, Punjab,Pakistan
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form-container">
+      <h2>Send Us a Message</h2>
+      <form
+        id="contactForm"
+        class="contact-form"
+        method="POST"
+        action="{% url 'contact' %}"
+      >
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Enter your email"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Enter your phone number"
+            />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              placeholder="Enter subject"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            placeholder="Enter your message"
+          ></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block extra_js %}
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
