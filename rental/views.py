@@ -8,13 +8,13 @@ from django.utils import timezone
 from datetime import datetime
 
 def home(request):
-    # This will serve as a landing page for all users
+    
     if request.user.is_authenticated:
-        # If user is logged in, show them available cars
-        cars = Car.objects.filter(available=True).order_by('?')[:3]  # Get 3 random available cars
+        
+        cars = Car.objects.filter(available=True).order_by('?')[:3]  
         return render(request, 'home.html', {'cars': cars})
     else:
-        # If user is not logged in, show welcome page prompting to login
+        
         return render(request, 'welcome.html')
 
 def about(request):
@@ -33,10 +33,10 @@ def contact(request):
             subject = request.POST.get('subject')
             message = request.POST.get('message')
             
-            # Create a contact detail object
+            
             ContactDetail.objects.create(
                 email=email,
-                phone=request.POST.get('phone', ''),  # Phone might be optional in the form
+                phone=request.POST.get('phone', ''),  
                 message=f"From: {name}\nSubject: {subject}\nMessage: {message}"
             )
             
@@ -53,9 +53,9 @@ def login_view(request):
         password = request.POST.get('password')
         
         try:
-            # Get user by email
+            
             user = User.objects.get(email=email)
-            # Authenticate with username and password
+            
             user = authenticate(request, username=user.username, password=password)
             
             if user is not None:
@@ -78,7 +78,7 @@ def signup(request):
             phone = request.POST.get('phone')
             role_name = request.POST.get('role')
             
-            # Validation
+            
             if password != confirm_password:
                 return JsonResponse({'success': False, 'error': 'Passwords do not match.'})
             
@@ -88,25 +88,25 @@ def signup(request):
             if User.objects.filter(email=email).exists():
                 return JsonResponse({'success': False, 'error': 'Email already exists.'})
             
-            # Get or create role
+            
             role, created = Role.objects.get_or_create(role_name=role_name)
             
-            # Create user with proper password handling
+            
             user = User.objects.create_user(
                 username=username,
                 email=email,
-                password=password,  # This will properly hash the password
+                password=password,  
                 phone=phone,
                 role=role
             )
             
-            # Set is_staff and is_superuser based on role
+            
             if role_name == 'admin':
                 user.is_staff = True
                 user.is_superuser = True
                 user.save()
             
-            # Log the user in
+            
             login(request, user)
             return JsonResponse({'success': True})
             
@@ -127,15 +127,15 @@ def add_car(request):
     
     if request.method == 'POST':
         try:
-            # Get form data
+            
             make = request.POST.get('name')
-            model = request.POST.get('transmission')  # Using transmission as model for now
+            model = request.POST.get('transmission')  
             car_type = request.POST.get('transmission')
             year = int(request.POST.get('year'))
             daily_rate = float(request.POST.get('price'))
             image_url = request.POST.get('image_url')
             
-            # Create new car
+            
             car = Car.objects.create(
                 make=make,
                 model=model,

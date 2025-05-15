@@ -20,7 +20,7 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('username', 'email', 'phone')
     ordering = ('username',)
 
-# Register your models here.
+
 admin.site.register(Role)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Car)
